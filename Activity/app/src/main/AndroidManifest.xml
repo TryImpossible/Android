@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.barry.activity">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name="com.barry.activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.barry.activity.SecondActivity">
+            <intent-filter>
+                <action android:name="a.b.c" />
+                <action android:name="a.b.c2" />
+
+                <data android:scheme="heima" />
+                <data
+                    android:mimeType="text/name"
+                    android:scheme="heima3" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="a.b.c2" />
+
+                <data android:scheme="heima2" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.barry.activity.FirstActivity" />
+        <activity android:name="com.barry.activity.LiefcyleActivity" />
+        <activity android:name="com.barry.activity.Liefcyle2Activity" />
+        <activity android:name="com.barry.activity.LauncherMode1Activity" />
+        <activity
+            android:name="com.barry.activity.LauncherMode2Activity"
+            android:launchMode="singleInstance" />
+        <activity android:name="com.barry.activity.CallbackDataActivity" />
+        <activity android:name="com.barry.activity.ContactActivity" />
+        <activity android:name="com.barry.activity.SmsActivity"></activity>
+    </application>
+
+</manifest>

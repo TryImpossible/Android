@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.barry.basic">
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CallActivity" />
+        <activity android:name=".activity.SmsActivity" />
+        <activity android:name=".activity.CalculatorActivity" />
+        <activity android:name=".activity.RelativeLayoutActivity" />
+        <activity
+            android:name=".activity.TableLayoutActivity"
+            android:label="@string/title_activity_table_layout" />
+        <activity android:name=".activity.FrameLayoutActivity" />
+        <activity android:name=".activity.AbsoluteLayoutActivity" />
+        <activity android:name=".activity.LogCatActivity" />
+        <activity android:name=".activity.InternalStroageActivity" />
+        <activity android:name=".activity.ExternalStorageActivity" />
+        <activity android:name=".activity.RemainingStorageActivity" />
+        <activity android:name=".activity.FilePermissionActivity" />
+        <activity android:name=".activity.SharepreferenceActivity" />
+        <activity android:name=".activity.XmlActivity" />
+        <activity android:name=".activity.SQLiteActivity" />
+        <activity android:name=".activity.ListViewActivity" />
+        <activity android:name=".activity.RemoteImageActivity" android:exported="true" />
+        <activity android:name=".activity.HtmlTextActivity" />
+        <activity android:name=".activity.NewsListActivity" />
+        <activity android:name=".activity.HttpClientActivity" />
+        <activity android:name=".activity.AsyncHttpClientActivity" />
+        <activity android:name=".activity.ThreadDowloadActivity" />
+        <activity android:name=".activity.XUtilsActivity"></activity>
+    </application>
+
+</manifest>

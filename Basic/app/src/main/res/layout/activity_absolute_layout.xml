@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.barry.basic.activity.AbsoluteLayoutActivity"
+    android:layout_gravity="center">
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center_horizontal"
+        android:text="一"
+        android:background="@android:color/holo_green_light"
+        android:layout_x="0dp"
+        android:layout_y="0dp"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="二"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_green_light"
+        android:layout_x="25dp"
+        android:layout_y="25dp"/>
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="三"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_green_light"
+        android:layout_x="50dp"
+        android:layout_y="50dp"/>
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="四"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_green_light"
+        android:layout_x="75dp"
+        android:layout_y="25dp"/>
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="五"
+        android:gravity="center_horizontal"
+        android:background="@android:color/holo_green_light"
+        android:layout_x="100dp"
+        android:layout_y="0dp"/>
+</AbsoluteLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.barry.activity.activity.MainActivity">
+
+
+    <Button
+        android:id="@+id/btn_jump"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity的跳轉"
+        />
+    <Button
+        android:id="@+id/btn_liefcycle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity的生命週期"
+        />
+    <Button
+        android:id="@+id/btn_launcherMode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity的啟動模式"
+        />
+    <Button
+        android:id="@+id/btn_callback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Activity回傳數據"
+        />
+
+</LinearLayout>

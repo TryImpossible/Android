@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.barry.basic.activity.MainActivity"
+    android:padding="15dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/call"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="拨号器" />
+
+                <Button
+                    android:id="@+id/sms"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="短信" />
+
+                <Button
+                    android:id="@+id/calc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="计算器" />
+
+                <Button
+                    android:id="@+id/relativeLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="相对布局" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/frameLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="帧布局" />
+
+                <Button
+                    android:id="@+id/tableLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="表格布局" />
+
+                <Button
+                    android:id="@+id/absoluteLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="绝对布局" />
+
+                <Button
+                    android:id="@+id/logcat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="LogCat" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/internalStorage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="内部存储" />
+
+                <Button
+                    android:id="@+id/externalStorage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="外部存储" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/remainingStorage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="獲取SD卡剩餘容量" />
+
+            <Button
+                android:id="@+id/filePermission"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="文件權限" />
+            <Button
+                android:id="@+id/sharepreference"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="sharepreference" />
+            <Button
+                android:id="@+id/xml"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="XmlHandle" />
+            <Button
+                android:id="@+id/sqlite"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SQLite" />
+            <Button
+                android:id="@+id/listview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ListView" />
+            <Button
+                android:id="@+id/remoteImage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RemoteImage" />
+            <Button
+                android:id="@+id/htmlText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HtmlText" />
+            <Button
+                android:id="@+id/news"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NewsList" />
+            <Button
+                android:id="@+id/httpClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="HttpClient" />
+            <Button
+                android:id="@+id/asyncHttpClient"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="AsyncHttpClient" />
+            <Button
+                android:id="@+id/threadDownload"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ThreadDownload" />
+            <Button
+                android:id="@+id/xutils"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Xutils" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
