@@ -1,0 +1,222 @@
+apply plugin: 'com.android.application'
+
+// 加载 local.properties 资源
+Properties properties = new Properties()
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream() ;
+properties.load( inputStream )
+
+ext {
+    compileSdkVersion = 26
+    buildToolsVersion = "26.0.1"
+    local = 'Hello from build.gradle'
+}
+task printProperties << {
+    println local        // Local extra property
+//    println propertiesFile        // Property from file
+//    if (project.hasProperty('cmd')) {
+//        println cmd        // Command line property
+//    }
+}
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+    defaultConfig {
+        applicationId "com.bynn.integration"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        // dex突破65535限制,当app方法数超过限制，会采用多dex打包
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../keystores/release.jks")
+            storePassword properties.getProperty('keyPassword')
+            keyAlias "release.jks"
+            keyPassword properties.getProperty('keyPassword')
+        }
+    }
+    buildTypes {
+        debug {
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            // 測試版接口Url
+            buildConfigField "String", "API_URL", '"https://app.debug/"'
+            // 不混淆
+            minifyEnabled false
+            // 不压缩优化
+            zipAlignEnabled false
+            // 不进行资源优化（删除无用资源等）
+            shrinkResources false
+            // 使用的签名信息
+            signingConfig signingConfigs.release
+            // 不使用混淆
+            minifyEnabled false
+            buildConfigField "String", "ENVIRONMENT", '"dev"'
+            resValue "string", "app_name", "dev" //作用於strings.xml文件，前提不能存在app_environment
+            manifestPlaceholders = [ENVIRONMENT: "integration",
+                                    app_icon   : "@mipmap/ic_launcher",]
+        }
+        release {
+            // 正式版不显示log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            // 正式版接口Url
+            buildConfigField "String", "API_URL", '"https://app.relase/"'
+            // 进行混淆
+            minifyEnabled true
+            // 进行压缩优化
+            zipAlignEnabled true
+            // 进行资源优化，移除无用的resource文件
+            shrinkResources true
+            // 使用的签名信息
+            signingConfig signingConfigs.release
+            // 混淆
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "ENVIRONMENT", '"dev"'
+            resValue "string", "app_name", "integration" //作用於strings.xml文件，前提不能存在app_environment
+            manifestPlaceholders = [ENVIRONMENT: "dev",
+                                    app_icon   : "@mipmap/ic_launcher",]
+        }
+
+        dev {
+            dev.initWith(buildTypes.debug)
+            applicationIdSuffix ".dev"
+            buildConfigField "String", "ENVIRONMENT", '"dev環境"'
+            resValue "string", "app_name", "integration_dev" //作用於strings.xml文件，前提不能存在app_environment
+            manifestPlaceholders = [ENVIRONMENT: "dev",
+                                    app_icon   : "@mipmap/ic_launcher_dev",]
+        }
+
+        stage {
+            stage.initWith(buildTypes.debug)
+            applicationIdSuffix ".stage"
+            buildConfigField "String", "ENVIRONMENT", '"stage環境"'
+            resValue "string", "app_name", "integration_stage"
+            manifestPlaceholders = [ENVIRONMENT: "stage",
+                                    app_icon   : "@mipmap/ic_launcher_stage"]
+        }
+
+        prod {
+            prod.initWith(buildTypes.debug)
+            applicationIdSuffix ".prod"
+            buildConfigField "String", "ENVIRONMENT", '"prod環境"'
+            resValue "string", "app_name", "integration_prod"
+            manifestPlaceholders = [ENVIRONMENT: "prod",
+                                    app_icon   : "@mipmap/ic_launcher_prod"]
+        }
+    }
+
+//    Flavors多維度
+//    flavorDimensions "channle", "version"
+//
+//    productFlavors {
+//        huawei {
+//            dimension "channle"
+//        }
+//
+//        xiaomi {
+//            dimension "channle"
+//        }
+//
+//        free {
+//            dimension "version"
+//        }
+//
+//        paid {，
+//            dimension "version"
+//        }
+//    }
+
+
+//    productFlavors {
+//        dev {
+//            // 每个环境包名不同
+//            applicationId "com.bynn.integration.dev"
+//            buildConfigField "String", "ENVIRONMENT", '"dev"'
+//            resValue "string", "app_name", "合_dev" //作用於strings.xml文件，前提不能存在app_environment
+//            manifestPlaceholders = [ENVIRONMENT: "dev",
+//                                    app_icon   : "@mipmap/ic_launcher",]
+//        }
+//
+//        stage {
+//            // 每个环境包名不同
+//            applicationId "com.bynn.integration.stage"
+//            buildConfigField "String", "ENVIRONMENT", '"stage"'
+//            resValue "string", "app_name", "合_stage"
+//            manifestPlaceholders = [ENVIRONMENT: "stage",
+//                                    app_icon   : "@mipmap/ic_launcher"]
+//        }
+//
+//        prod {
+//            // 每个环境包名不同
+//            applicationId "com.bynn.integration.prod"
+//            buildConfigField "String", "ENVIRONMENT", '"prod"'
+//            resValue "string", "app_name", "合_prod"
+//            manifestPlaceholders = [ENVIRONMENT: "pro",
+//                                    app_icon   : "@mipmap/ic_launcher"]
+//        }
+//    }
+
+    //应用编译完成，自定义apk输出位置及文件名
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+
+            if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
+                def prefixName = 'integration';
+                def now = new Date().format('yyyy-MM-dd HH-mm-ss');
+                def apkDir = properties.getProperty('desktop') + prefixName + ' ' + now;
+
+                if (variant.buildType.name != 'release' && variant.buildType.name != 'debug') {
+                    def releaseApkName = prefixName + '_vn' + defaultConfig.versionName + '_vc' + defaultConfig.versionCode + '_' + variant.buildType.name + '.apk';
+                    output.outputFile = new File(apkDir, releaseApkName);
+                }
+
+                if (variant.buildType.name == 'release') {
+
+//                    def suffixName = 'release.apk';
+//                    def releaseApkName = prefixName + '_vn' + defaultConfig.versionName + '_vc' + defaultConfig.versionCode + '_' + suffixName;
+//                    output.outputFile = new File(apkDir, releaseApkName)
+//                    println('releaseApkName:' + releaseApkName);
+                }
+                if (variant.buildType.name == 'debug') {
+//                    def suffixName = 'debug.apk';
+//                    输出apk名称为：渠道名_app名_版本名_版本號.apk
+//                    def releaseApkName = variant.productFlavors[0].name + '_' + prefixName + '_vn' + defaultConfig.versionName + '_vc' + defaultConfig.versionCode + '_' + suffixName;
+//                    output.outputFile = new File(apkDir, releaseApkName)
+//                    println('releaseApkName:' + releaseApkName);
+                }
+            }
+        }
+    }
+
+    //移除lint检测的error
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile project(':bynnframework')
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    compile 'com.android.support:appcompat-v7:26.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    testCompile 'junit:junit:4.12'
+//    // 引用本的项目
+//    devCompile project(':devModule')
+//    stageCompile project(':stageModule')
+//    prodCompile project(':prodModule')
+//
+//    // 也可以分渠道引用网络的。因为这里都相同，所以地址也就都一样了
+//    devCompile 'com.roughike:bottom-bar:2.0.2'
+//    stageCompile 'com.roughike:bottom-bar:2.0.2'
+//    prodCompile 'com.roughike:bottom-bar:2.0.2'
+
+}
