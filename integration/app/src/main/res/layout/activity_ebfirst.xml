@@ -3,37 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.bynn.integration.MainActivity">
-
+    android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/tv"
+        android:id="@+id/tv_text"
+        android:textSize="20sp"
+        android:text="Hello World"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="合"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/btn_photo_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="PhotoView"
-        android:layout_marginTop="10dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
 
     <Button
-        android:id="@+id/btn_eventbus"
+        android:id="@+id/btn_ebSecond"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EventBus"
-        android:layout_marginTop="10dp"
+        android:text="点击打开新的Activity"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_photo_view"/>
+        app:layout_constraintTop_toBottomOf="@id/tv_text"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/btn_ebThrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EventBus sticky"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_ebSecond"
+        android:layout_marginBottom="30dp" />
 
 </android.support.constraint.ConstraintLayout>

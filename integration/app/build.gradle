@@ -2,8 +2,8 @@ apply plugin: 'com.android.application'
 
 // 加载 local.properties 资源
 Properties properties = new Properties()
-InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream() ;
-properties.load( inputStream )
+InputStream inputStream = project.rootProject.file('local.properties').newDataInputStream();
+properties.load(inputStream)
 
 ext {
     compileSdkVersion = 26
@@ -86,7 +86,8 @@ android {
             dev.initWith(buildTypes.debug)
             applicationIdSuffix ".dev"
             buildConfigField "String", "ENVIRONMENT", '"dev環境"'
-            resValue "string", "app_name", "integration_dev" //作用於strings.xml文件，前提不能存在app_environment
+            resValue "string", "app_name", "integration_dev"
+            //作用於strings.xml文件，前提不能存在app_environment
             manifestPlaceholders = [ENVIRONMENT: "dev",
                                     app_icon   : "@mipmap/ic_launcher_dev",]
         }
@@ -130,7 +131,6 @@ android {
 //            dimension "version"
 //        }
 //    }
-
 
 //    productFlavors {
 //        dev {
@@ -219,4 +219,7 @@ dependencies {
 //    stageCompile 'com.roughike:bottom-bar:2.0.2'
 //    prodCompile 'com.roughike:bottom-bar:2.0.2'
 
+    compile 'org.greenrobot:eventbus:3.0.0'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
 }
