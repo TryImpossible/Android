@@ -32,6 +32,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.btn_jump:
                 startActivity(FirstActivity.class);
+                overridePendingTransition(R.anim.push_right_in, R.anim.push_left_out);
                 break;
             case R.id.btn_liefcycle:
                 startActivity(LiefcyleActivity.class);

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 
 public class FirstActivity extends Activity {
@@ -86,4 +87,24 @@ public class FirstActivity extends Activity {
         intent.setClassName("com.barry.basic", "com.barry.basic.activity.RemoteImageActivity");
         startActivity(intent);
     }
+
+    //处理后退键的情况
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK){
+
+            this.finish();	//finish当前activity
+            overridePendingTransition(R.anim.back_left_in,
+                    R.anim.back_right_out);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+
+//    protected void onPause() {
+//        // TODO Auto-generated method stub
+//        super.onPause();
+//        overridePendingTransition(R.anim.back_left_in, R.anim.back_right_out);
+//    }
 }
