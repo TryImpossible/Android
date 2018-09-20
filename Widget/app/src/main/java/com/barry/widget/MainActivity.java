@@ -57,4 +57,9 @@ public class MainActivity extends Activity {
         Intent intent = new Intent(this, CustomPhotographyActivity.class);
         startActivity(intent);
     }
+
+    public void click10(View v) {
+        Intent intent = new Intent(this, RecyclerViewActivity.class);
+        startActivity(intent);
+    }
 }
