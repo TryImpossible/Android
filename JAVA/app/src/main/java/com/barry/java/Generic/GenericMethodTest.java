@@ -1,5 +1,8 @@
 package com.barry.java.Generic;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GenericMethodTest {
 
     public static <E> void printArray(E[] inputArray) {
@@ -32,6 +35,8 @@ public class GenericMethodTest {
 //        System.out.print("\n字符型数组元素为:");
 //        printArray(characterArray);
 
+
+
         System.out.printf( "%d, %d 和 %d 中最大的数为 %d\n\n",
                 3, 4, 5, maximum( 3, 4, 5 ) );
 
@@ -40,5 +45,6 @@ public class GenericMethodTest {
 
         System.out.printf( "%s, %s 和 %s 中最大的数为 %s\n","pear",
                 "apple", "orange", maximum( "pear", "apple", "orange" ) );
+
     }
 }
